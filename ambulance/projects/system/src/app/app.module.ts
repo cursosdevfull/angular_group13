@@ -4,9 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ListUserComponent } from './user/list.component';
 import { UserComponent } from './user/user.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ListUserComponent],
+  declarations: [AppComponent, UserComponent, ListUserComponent, ProductListComponent, ProductComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],

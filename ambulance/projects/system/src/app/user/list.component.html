@@ -1,0 +1,11 @@
+<table class="table table-hover table-striped col-8">
+  <tr *ngFor="let user of users; let ind = index">
+    <td>
+      <amb-user>
+        <span indexUser>{{ ind }}</span>
+        <span nameUser>{{ user.name }}</span>
+        <span ageUser>{{ user.age }}</span>
+      </amb-user>
+    </td>
+  </tr>
+</table>
