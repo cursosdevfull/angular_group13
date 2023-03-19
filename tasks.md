@@ -21,4 +21,4 @@
 ```
 
 - Tiene que tener dos columnas. En la columna izquierda mostrar la imagen. En la otra la información de la película
-  \_Nota: <img src="{{imagen}}">
+  _Nota: '<img src="{{imagen}} ..."_
