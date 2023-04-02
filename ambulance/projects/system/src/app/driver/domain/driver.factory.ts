@@ -7,7 +7,7 @@ export class DriverFactory {
       throw new Error('El nombre no puede estar vacío');
     }
 
-    const emailVO = new EmailVO(correo);
+    const emailVO = EmailVO.create(correo);
 
     const driverProperties: DriverProperties = {
       id: Math.floor(Math.random() * 1000 + 1),

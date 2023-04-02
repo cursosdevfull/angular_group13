@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DriverApplication } from '../../../application/driver';
+import { DriverApplication } from '../../../application/driver-application';
 import { DriverFactory } from '../../../domain/driver.factory';
 
 @Component({

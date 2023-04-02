@@ -1,13 +1,17 @@
 export class EmailVO {
   private readonly value: string;
 
-  private isValid(email: string): boolean {
+  private static isValid(email: string): boolean {
     return !!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
   }
 
-  constructor(value: string) {
-    if (!this.isValid(value)) throw new Error('El correo no es válido');
+  private constructor(value: string) {
     this.value = value;
+  }
+
+  static create(value: string): EmailVO {
+    if (!this.isValid(value)) throw new Error('El correo no es válido');
+    return new EmailVO(value);
   }
 
   getValue(): string {

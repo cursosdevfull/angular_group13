@@ -16,11 +16,6 @@ export type DriverProperties = DriverEssentials & Partial<DriverOptional>;
 
 export type DriverUpdate = Partial<Omit<DriverProperties, 'id'>>;
 
-/* export interface DriverUpdate {
-    nombre: string;
-    seguro: string;
-}
- */
 export class Driver {
   private readonly id: number;
   private correo: string;
@@ -33,9 +28,7 @@ export class Driver {
 
   constructor(properties: DriverProperties) {
     Object.assign(this, properties);
-    /*     this.id = properties.id;
-    this.nombre = properties.nombre;
- */ this.activo = true;
+    this.activo = true;
     this.createdAt = new Date();
   }
 
@@ -62,7 +55,3 @@ export class Driver {
     this.activo = false;
   }
 }
-/* 
-const driverInfo: DriverProperties = { id: 10, nombre: 'Juan' };
-
-const driver = new Driver(driverInfo); */
