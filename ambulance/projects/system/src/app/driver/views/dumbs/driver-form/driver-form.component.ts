@@ -16,7 +16,11 @@ export class DriverForm {
     const driver = DriverFactory.create(nombre, correo);
 
     const driverResponse = this.driverApplication.create(driver);
-    console.log(driverResponse);
+
+    driverResponse.subscribe({
+      next: console.log,
+    });
+    //console.log('driverResponse', driverResponse);
 
     /*     console.log(driver);
 
