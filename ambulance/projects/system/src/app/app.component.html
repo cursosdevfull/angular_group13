@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="dataLoaded; else showCargando">
+    <h1>{{ title }}</h1>
     <amb-login></amb-login>
   </div>
+  <ng-template #showCargando>
+    <div class="row">Cargando...</div>
+  </ng-template>
 </div>

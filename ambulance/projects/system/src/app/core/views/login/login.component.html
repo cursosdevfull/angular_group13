@@ -1,1 +1,30 @@
-<p>login works!</p>
+<form class="col-4">
+  <div class="mb-3">
+    <label for="inputEmail" class="form-label">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="inputEmail"
+      placeholder="name@example.com"
+      #email
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="inputPassword"
+      placeholder="Password"
+      #password
+    />
+  </div>
+  <div class="mb-3">
+    <button type="button" class="btn btn-primary" (click)="login()">
+      Login
+    </button>
+  </div>
+</form>
+<amb-header></amb-header>
+<amb-header></amb-header>
