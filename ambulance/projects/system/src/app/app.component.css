@@ -1,0 +1,32 @@
+mat-sidenav-container,
+mat-sidenav-content {
+  height: 100vh;
+}
+
+mat-sidenav-content {
+  /*   display: flex;
+  justify-content: flex-end; */
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.login {
+  /*   display: flex;
+  align-items: center; */
+  background-color: white;
+  padding: 0 20px;
+}
+
+form {
+  /* display: flex;
+  flex-direction: column; */
+  width: 320px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}

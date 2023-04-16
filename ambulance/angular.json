@@ -23,6 +23,7 @@
               "projects/system/src/assets"
             ],
             "styles": [
+              "projects/system/src/custom-theme.scss",
               "projects/system/src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],

@@ -1,4 +1,4 @@
-<form class="col-4">
+<form class="col-4" [formGroup]="fg">
   <div class="mb-3">
     <label for="inputEmail" class="form-label">Email</label>
     <input
@@ -6,8 +6,29 @@
       class="form-control"
       id="inputEmail"
       placeholder="name@example.com"
+      formControlName="email"
       #email
     />
+    <span
+      class="error"
+      *ngIf="fg.get('email').hasError('required') && fg.get('email').touched"
+      >Debe ingresar un valor al email</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('email').hasError('invalidEmail') && fg.get('email').touched
+      "
+      >El valor debe tener la estructura de un correo</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('email').hasError('invalidDomain') && fg.get('email').touched
+      "
+      >Solo se permiten correos con los dominios domain1.com, domain2.com o
+      domain3.com</span
+    >
   </div>
 
   <div class="mb-3">
@@ -17,9 +38,75 @@
       class="form-control"
       id="inputPassword"
       placeholder="Password"
+      formControlName="password"
       #password
     />
+    <span
+      class="error"
+      *ngIf="
+        fg.get('password').hasError('required') && fg.get('password').touched
+      "
+      >Debe ingresar un valor al password</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('password').hasError('passwordInvalid') &&
+        fg.get('password').touched
+      "
+      >El password debe tener al menos 5 caracteres</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('password').hasError('notMatchPassword') &&
+        fg.get('password').touched
+      "
+      >El password y su confirmación no son iguales</span
+    >
   </div>
+  <div class="mb-3">
+    <label for="inputConfirmPassword" class="form-label"
+      >Confirm Password</label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="inputConfirmPassword"
+      placeholder="Password"
+      formControlName="confirmPassword"
+      #password
+    />
+    <span
+      class="error"
+      *ngIf="
+        fg.get('confirmPassword').hasError('required') &&
+        fg.get('confirmPassword').touched
+      "
+      >Debe ingresar un valor a la confirmación del password</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('confirmPassword').hasError('passwordInvalid') &&
+        fg.get('confirmPassword').touched
+      "
+      >La confirmación del password debe tener al menos 5 caracteres</span
+    >
+    <span
+      class="error"
+      *ngIf="
+        fg.get('confirmPassword').hasError('notMatchPassword') &&
+        fg.get('confirmPassword').touched
+      "
+      >El password y su confirmación no son iguales</span
+    >
+  </div>
+
+  <span class="error" *ngIf="fg.hasError('notMatchPasswordForm') && fg.touched"
+    >El password y su confirmación no son iguales</span
+  >
+
   <div class="mb-3">
     <button type="button" class="btn btn-primary" (click)="login()">
       Login

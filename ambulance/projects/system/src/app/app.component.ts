@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { CustomValidators } from './helpers/CustomValidators';
 
 @Component({
   selector: 'amb-root',
@@ -6,14 +9,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  @ViewChild('password') inputPassword: ElementRef;
   title = 'system';
+  visibility = false;
 
-  dataLoaded = false;
+  fg: FormGroup;
 
   constructor() {
-    setTimeout(() => {
-      this.dataLoaded = true;
-      this.title = "App Name"
-    }, 3000);
+    this.initForm();
+  }
+
+  initForm() {
+    this.fg = new FormGroup({
+      email: new FormControl('', [Validators.required, CustomValidators.Email]),
+      password: new FormControl('', [
+        Validators.required,
+        CustomValidators.Password('[\\w-]{5,}'),
+      ]),
+    });
+  }
+
+  showPassword() {
+    this.inputPassword.nativeElement.type =
+      this.inputPassword.nativeElement.type === 'text' ? 'password' : 'text';
+    this.visibility = !this.visibility;
   }
 }
