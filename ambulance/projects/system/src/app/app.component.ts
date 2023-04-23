@@ -1,7 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 
-import { CustomValidators } from './helpers/CustomValidators';
+import { ILayout } from './config/interfaces/layout.interface';
+import { LayoutService } from './config/services/layout.service';
+import { WaitService } from './shared/services/wait.service';
 
 @Component({
   selector: 'amb-root',
@@ -9,29 +10,20 @@ import { CustomValidators } from './helpers/CustomValidators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @ViewChild('password') inputPassword: ElementRef;
-  title = 'system';
-  visibility = false;
+  showWait: boolean = false;
+  configLayout: ILayout;
 
-  fg: FormGroup;
-
-  constructor() {
-    this.initForm();
-  }
-
-  initForm() {
-    this.fg = new FormGroup({
-      email: new FormControl('', [Validators.required, CustomValidators.Email]),
-      password: new FormControl('', [
-        Validators.required,
-        CustomValidators.Password('[\\w-]{5,}'),
-      ]),
+  constructor(
+    private readonly wait: WaitService,
+    //private readonly fullscreen: FullscreenService
+    private readonly layoutService: LayoutService
+  ) {
+    this.wait.getStatus().subscribe((status) => {
+      this.showWait = status;
     });
-  }
 
-  showPassword() {
-    this.inputPassword.nativeElement.type =
-      this.inputPassword.nativeElement.type === 'text' ? 'password' : 'text';
-    this.visibility = !this.visibility;
+    this.layoutService.configuration.subscribe((config) => {
+      this.configLayout = config;
+    });
   }
 }

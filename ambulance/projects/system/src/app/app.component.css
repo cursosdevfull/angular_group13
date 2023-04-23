@@ -4,29 +4,15 @@ mat-sidenav-content {
 }
 
 mat-sidenav-content {
-  /*   display: flex;
-  justify-content: flex-end; */
-  background-color: rgba(0, 0, 0, 0.03);
+}
+
+mat-sidenav {
+  width: 200px;
+  background-color: #dee2e6;
+  /*   background-color: rgb(15, 23, 42); */
 }
 
 .login {
-  /*   display: flex;
-  align-items: center; */
-  background-color: white;
+  background-color: #f1f1f1;
   padding: 0 20px;
-}
-
-form {
-  /* display: flex;
-  flex-direction: column; */
-  width: 320px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.pointer {
-  cursor: pointer;
 }

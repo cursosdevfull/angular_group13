@@ -1,0 +1,48 @@
+mat-nav-list {
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+mat-list-item {
+  border-radius: 8px;
+  color: white;
+  margin-top: 10px !important;
+  transition: 0.2s background-color;
+}
+
+mat-list-item.menu:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  /* color: rgba(255, 255, 255, 0.5) !important; */
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: 0 10px;
+}
+
+a:hover {
+  color: white !important;
+}
+
+.activeLink a,
+.activeLink a:link,
+.activeLink a:visited,
+.activeLink a:active {
+  color: white !important;
+  font-size: 13px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+}

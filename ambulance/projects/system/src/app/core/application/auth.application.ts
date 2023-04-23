@@ -11,7 +11,7 @@ export class AuthApplication {
     @Inject(AuthInfrastructure) private readonly repository: AuthRepository
   ) {}
 
-  login(email: string, password: string): Observable<Tokens> {
+  login(email: string, password: string): Observable<Tokens | null> {
     return this.repository.login(email, password);
   }
 }

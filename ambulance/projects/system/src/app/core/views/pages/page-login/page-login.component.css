@@ -1,0 +1,10 @@
+.contenedor {
+  height: 100vh;
+  background-image: url(/assets/images/background-new.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login {
+  background-color: #f1f1f1;
+}

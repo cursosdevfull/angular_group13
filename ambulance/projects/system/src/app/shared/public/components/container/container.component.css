@@ -1,0 +1,5 @@
+.contenedor {
+  padding: 20px 0;
+  background-color: whitesmoke;
+  height: calc(100vh - 64px - 80px);
+}
