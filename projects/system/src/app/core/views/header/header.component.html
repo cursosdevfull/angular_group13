@@ -1,0 +1,18 @@
+<mat-toolbar fxLayout fxLayoutAlign="end">
+  <button mat-button class="profile" [matMenuTriggerFor]="menu">
+    <img src="/assets/images/user.png" />
+    <span>username</span>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>lock</mat-icon>
+    Bloquear sesión
+  </button>
+  <button mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    Cerrar sesión
+  </button>
+</mat-menu>

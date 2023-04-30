@@ -1,0 +1,14 @@
+<mat-nav-list>
+  <mat-list-item
+    class="menu"
+    *ngFor="let item of menuService.listMenu"
+    routerLinkActive="activeLink"
+  >
+    <a [routerLink]="item.path">
+      <button mat-button>
+        <mat-icon>{{ item.iconName }}</mat-icon>
+        {{ item.title }}
+      </button>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,13 @@
+:host {
+  width: 100%;
+}
+
+.profile {
+  height: 100%;
+}
+
+.profile img {
+  width: 100%;
+  max-width: 40px;
+  margin-right: 10px;
+}

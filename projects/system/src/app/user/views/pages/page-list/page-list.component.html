@@ -1,0 +1,18 @@
+<amb-title title="USER" icon="face">
+  <button mat-raised-button color="primary">
+    <mat-icon>add</mat-icon>
+    <span>ADD USER</span>
+  </button>
+</amb-title>
+<amb-container>
+  <perfect-scrollbar class="maxHeightPerfectScrollbar">
+    <amb-table [metadata]="metadata" [data]="data"></amb-table>
+  </perfect-scrollbar>
+  <div>
+    <amb-paginator
+      (onChangePage)="changePage($event)"
+      [length]="dataOriginal.length"
+      [pageSize]="10"
+    ></amb-paginator>
+  </div>
+</amb-container>
