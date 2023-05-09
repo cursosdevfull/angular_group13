@@ -1,12 +1,31 @@
-import { delay, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Tokens } from '../domain/entities/tokens.entity';
 import { AuthRepository } from '../domain/repositories/auth.repository';
-import userMock from './user.mock.json';
+import { EnvironmentService } from '../services/environment.service';
+import { AuthLoginDto } from './dtos/auth-login.dto';
 
+@Injectable()
 export class AuthInfrastructure implements AuthRepository {
-  login(email: string, password: string): Observable<Tokens | null> {
-    const userFound = userMock.find(
+  constructor(
+    private http: HttpClient,
+    private environment: EnvironmentService
+  ) {}
+
+  login(
+    email: string,
+    password: string,
+    recaptcha: string
+  ): Observable<Tokens | null> {
+    const data = AuthLoginDto.fromDomainToData(email, password, recaptcha);
+    return this.http.post<Tokens>(
+      `${this.environment.parameters.apiPath}/users/login`,
+      data
+    );
+
+    /*  const userFound = userMock.find(
       (user) => user.email === email && user.password === password
     );
 
@@ -18,6 +37,6 @@ export class AuthInfrastructure implements AuthRepository {
         })
       : of(null);
 
-    return obs.pipe(delay(1000));
+    return obs.pipe(delay(1000)); */
   }
 }

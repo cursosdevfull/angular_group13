@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { MedicApplication } from '../../../application/medic.application';
+
 @Component({
   selector: 'amb-page-list',
   templateUrl: './page-list.component.html',
@@ -222,11 +224,14 @@ export class PageListComponent {
 
   data: any[];
 
-  constructor() {
+  constructor(private readonly application: MedicApplication) {
     this.changePage(0);
   }
 
   changePage(pageNumber: number) {
-    this.data = this.dataOriginal.slice(pageNumber * 10, pageNumber * 10 + 10);
+    this.application.page(pageNumber).subscribe((data) => {
+      console.log(data);
+    });
+    //this.data = this.dataOriginal.slice(pageNumber * 10, pageNumber * 10 + 10);
   }
 }

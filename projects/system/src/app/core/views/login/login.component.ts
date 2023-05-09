@@ -1,10 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { CustomValidators } from '../../../helpers/CustomValidators';
-import { UtilsService } from '../../../shared/services/utils.service';
-import { WaitService } from '../../../shared/services/wait.service';
 import { AuthApplication } from '../../application/auth.application';
 
 @Component({
@@ -19,12 +16,7 @@ export class LoginComponent {
 
   fg: FormGroup;
 
-  constructor(
-    private readonly app: AuthApplication,
-    private readonly utils: UtilsService,
-    private readonly wait: WaitService /*     private readonly notify: MatSnackBar */,
-    private readonly router: Router
-  ) {
+  constructor(private readonly appAuth: AuthApplication) {
     this.initForm();
   }
 
@@ -33,8 +25,9 @@ export class LoginComponent {
       email: new FormControl('', [Validators.required, CustomValidators.Email]),
       password: new FormControl('', [
         Validators.required,
-        CustomValidators.Password('[\\w-]{5,}'),
+        CustomValidators.Password('[\\w-]{3,}'),
       ]),
+      recaptcha: new FormControl(null, Validators.required),
     });
   }
 
@@ -45,17 +38,7 @@ export class LoginComponent {
   }
 
   login() {
-    const { email, password } = this.fg.value;
-
-    this.wait.changeStatus(true);
-    this.app.login(email, password).subscribe((tokens) => {
-      this.wait.changeStatus(false);
-      if (!tokens) {
-        this.utils.showNotify('Invalid credentials');
-        return;
-      } else {
-        this.router.navigate(['/dashboard']);
-      }
-    });
+    const { email, password, recaptcha } = this.fg.value;
+    this.appAuth.login(email, password, recaptcha);
   }
 }

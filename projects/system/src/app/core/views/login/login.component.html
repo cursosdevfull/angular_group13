@@ -44,7 +44,7 @@
         fg.get('password').hasError('invalidPassword') &&
         fg.get('password').touched
       "
-      >Password must be at least 5 characters</mat-error
+      >Password must be at least 3 characters</mat-error
     >
     <mat-icon
       matSuffix
@@ -54,6 +54,9 @@
       >visibility_off</mat-icon
     >
   </mat-form-field>
+  <div class="recaptcha">
+    <re-captcha formControlName="recaptcha"></re-captcha>
+  </div>
   <button
     mat-raised-button
     color="primary"

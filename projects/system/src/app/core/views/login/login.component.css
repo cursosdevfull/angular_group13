@@ -13,3 +13,7 @@ h1 {
 .pointer {
   cursor: pointer;
 }
+
+.recaptcha {
+  padding: 10px 0;
+}
