@@ -1,5 +1,5 @@
 <amb-title title="MEDIC" icon="settings_accessibility">
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="showForm()">
     <mat-icon>add</mat-icon>
     <span>ADD MEDIC</span>
   </button>
@@ -11,8 +11,8 @@
   <div>
     <amb-paginator
       (onChangePage)="changePage($event)"
-      [length]="dataOriginal.length"
-      [pageSize]="10"
+      [length]="totalRecords"
+      [pageSize]="pageSize"
     ></amb-paginator>
   </div>
 </amb-container>

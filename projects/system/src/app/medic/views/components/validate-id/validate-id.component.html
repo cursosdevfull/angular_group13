@@ -1,0 +1,8 @@
+<p>validate-id works!</p>
+<form [formGroup]="fg">
+  <input type="text" formControlName="name" /><br />
+  <input type="text" formControlName="lastName" /><br />
+  <button (click)="exit()">Save</button>
+</form>
+
+<p>{{ results | json }}</p>

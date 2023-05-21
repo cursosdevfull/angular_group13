@@ -8,15 +8,20 @@ import {
 
 import { MaterialModule } from '../material/material.module';
 import { ContainerComponent } from './components/container/container.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 import { TableComponent } from './components/table/table.component';
 import { TitleComponent } from './components/title/title.component';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 @NgModule({
-  declarations: [ContainerComponent, TitleComponent, TableComponent, PaginatorComponent],
+  declarations: [
+    ContainerComponent,
+    TitleComponent,
+    TableComponent,
+    PaginatorComponent,
+  ],
   imports: [CommonModule, MaterialModule],
   exports: [
     ContainerComponent,
