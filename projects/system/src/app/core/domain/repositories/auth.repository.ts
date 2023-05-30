@@ -8,4 +8,6 @@ export interface AuthRepository {
     password: string,
     recaptcha: string
   ): Observable<Tokens | null>;
+
+  getNewAccessToken(refreshToken: string): Observable<Tokens>;
 }

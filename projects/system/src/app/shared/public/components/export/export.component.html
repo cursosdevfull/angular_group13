@@ -1,0 +1,20 @@
+<mat-nav-list>
+  <mat-list-item (click)="exportToExcel()">
+    <span matListItemTitle>Exportar a Excel</span>
+  </mat-list-item>
+
+  <mat-list-item (click)="exportToPDF('view')">
+    <span matListItemTitle>Exportar a PDF</span>
+    <span matLine>Ver el pdf</span>
+  </mat-list-item>
+
+  <mat-list-item (click)="exportToPDF('print')">
+    <span matListItemTitle>Exportar a PDF</span>
+    <span matLine>Listo para imprimir</span>
+  </mat-list-item>
+
+  <mat-list-item (click)="exportToPDF('download')">
+    <span matListItemTitle>Exportar a PDF</span>
+    <span matLine>Descargar</span>
+  </mat-list-item>
+</mat-nav-list>

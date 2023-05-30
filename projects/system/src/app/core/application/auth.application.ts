@@ -47,4 +47,8 @@ export class AuthApplication {
     this.isUserLoggedIn = false;
     this.router.navigate(['/']);
   }
+
+  getNewAccessToken(refreshToken: string) {
+    return this.repository.getNewAccessToken(refreshToken);
+  }
 }

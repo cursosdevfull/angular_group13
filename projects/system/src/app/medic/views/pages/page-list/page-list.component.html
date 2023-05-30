@@ -6,9 +6,25 @@
 </amb-title>
 <amb-container>
   <perfect-scrollbar class="maxHeightPerfectScrollbar">
-    <amb-table [metadata]="metadata" [data]="data"></amb-table>
+    <amb-table [metadata]="metadata" [data]="data">
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="showForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="delete(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </amb-table>
   </perfect-scrollbar>
-  <div>
+  <div fxLayout fxLayoutAlign="space-between center" class="footer">
+    <button mat-flat-button color="warn" (click)="showExport()">
+      <mat-icon>download_for_offline</mat-icon>
+      Exportar data
+    </button>
     <amb-paginator
       (onChangePage)="changePage($event)"
       [length]="totalRecords"

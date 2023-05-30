@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  Input,
+  QueryList,
+  ViewChild,
+} from '@angular/core';
+import { MatColumnDef, MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'amb-table',
@@ -6,24 +13,28 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent {
-  @Input() metadata: any[] = [];
+  @ViewChild(MatTable, { static: true }) table: MatTable<any>;
+  @ContentChildren(MatColumnDef) columnsDefs: QueryList<MatColumnDef>;
+
+  @Input()
+  metadata: any[] = [];
   @Input() data: any[] = [];
   columns: string[];
-  /*   columns: string[] = ['id', 'name', 'lastname'];
-
-  data = [
-    {
-      id: 1,
-      name: 'Carlos',
-      lastname: 'Zavala',
-    },
-    { id: 2, name: 'Claudia', lastname: 'Zapata' },
-    { id: 3, name: 'Juan', lastname: 'Pérez' },
-  ]; */
 
   constructor() {}
 
   ngOnInit() {
     this.columns = this.metadata.map((item) => item.field);
+  }
+
+  ngAfterViewInit() {}
+
+  ngAfterContentInit() {
+    if (!this.columnsDefs) return;
+
+    this.columnsDefs.forEach((columnDef) => {
+      this.columns.push(columnDef.name);
+      this.table.addColumnDef(columnDef);
+    });
   }
 }

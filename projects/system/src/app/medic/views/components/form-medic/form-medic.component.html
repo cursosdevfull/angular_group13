@@ -1,52 +1,63 @@
 <mat-toolbar fxLayout fxLayoutAlign="space-between center">
-  <h3>Action</h3>
+  <h3>{{ title }}</h3>
   <button mat-icon-button mat-dialog-close>
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<form mat-dialog-content fxLayout="column">
+<form mat-dialog-content fxLayout="column" [formGroup]="fg">
   <div fxLayout fxLayoutGap="20px">
     <div fxLayout="column" fxFlex="1 1 33%">
-      <amb-photo></amb-photo>
+      <amb-photo
+        formControlName="photo"
+        [photoByDefault]="photoToShow"
+      ></amb-photo>
     </div>
     <div fxLayout="column" fxFlex="1 1 33%">
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="name" />
         <mat-error>Name is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Segundo nombre</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="surname" />
         <mat-error>Surname is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Apellido</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="lastname" />
         <mat-error>Lastname is required</mat-error>
       </mat-form-field>
     </div>
     <div fxLayout="column" fxFlex="1 1 33%">
       <mat-form-field appearance="outline">
         <mat-label>CMP</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="cmp" />
         <mat-error>CMP is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>DNI</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="dni" />
         <mat-error>DNI is required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Correo</mat-label>
-        <input type="text" matInput required />
+        <input type="text" matInput required formControlName="email" />
         <mat-error>Email is required</mat-error>
       </mat-form-field>
     </div>
   </div>
 
   <div fxLayout fxLayoutAlign="end" fxLayoutGap="20px">
-    <button mat-raised-button color="primary" type="button">Save</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      [disabled]="fg.invalid"
+      (click)="save()"
+    >
+      Save
+    </button>
     <button mat-button mat-dialog-close type="button">Cancel</button>
   </div>
 </form>

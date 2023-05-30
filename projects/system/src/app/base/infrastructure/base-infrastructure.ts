@@ -28,7 +28,7 @@ export class BaseInfrastructure<Entity> {
   }
   update(id: number, entity: Entity): Observable<any> {
     return this.http.put(
-      `${this.environment.parameters.apiPath}/${this.endpointName}`,
+      `${this.environment.parameters.apiPath}/${this.endpointName}/${id}`,
       entity
     );
   }
