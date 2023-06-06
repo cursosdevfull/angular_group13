@@ -21,7 +21,7 @@ export class StorageApplication {
     this.storage.clear();
   }
 
-  getFieldInToken(field: 'name' | 'email') {
+  getFieldInToken(field: 'name' | 'email' | 'roles') {
     return this.storage.getFieldInToken(field);
-  } 
+  }
 }

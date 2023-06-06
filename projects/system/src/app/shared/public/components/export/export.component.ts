@@ -51,6 +51,8 @@ export class ExportComponent {
   }
 
   async exportToPDF(option: ACTIONS_PDF) {
+    this.reference.dismiss();
+
     const imageDataUrl = await this.toDataUrl('/assets/images/logo.jpg');
 
     const data = this.toFormat(this.records, this.metadata);
@@ -64,6 +66,14 @@ export class ExportComponent {
           },
         ];
       },
+      /*header: function (currentPage, pageCount) {
+        return [
+          {
+            text: currentPage.toString() + ' of ' + pageCount.toString(),
+            alignment: 'center',
+          },
+        ];
+      },*/
       pageSize: 'A4',
       pageOrientation: 'portrait',
       pageMargins: [20, 20, 20, 20],
@@ -197,5 +207,41 @@ export class ExportComponent {
     };
   }
 
-  generateTableData(records: any[]) {}
+  generateTableData(records: any[]) {
+    const body = records.map((el) =>
+      Object.keys(el).map((prop) => this.generateRowData(prop, el[prop]))
+    );
+
+    const rowHeaders = Object.keys(records[0]).map((prop) => [
+      {
+        border: [false, false, false, false],
+        text: prop,
+        style: 'header',
+      },
+    ]);
+
+    const quantityColumns = rowHeaders.length;
+    const widths = Array.from(Array(quantityColumns).keys()).map(
+      (el) => Math.floor(100 / quantityColumns) + '%'
+    );
+
+    body.unshift(rowHeaders);
+
+    return {
+      margin: [0, 0, 0, 15],
+      table: {
+        widths,
+        body,
+      },
+    };
+  }
+
+  generateRowData(propertyName: string, value: string) {
+    return [
+      {
+        border: [false, false, false, false],
+        text: value,
+      },
+    ];
+  }
 }

@@ -11,6 +11,7 @@ import { ContainerComponent } from './components/container/container.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { TableComponent } from './components/table/table.component';
 import { TitleComponent } from './components/title/title.component';
+import { RolesAllowedDirective } from './directives/roles-allowed.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -21,6 +22,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TitleComponent,
     TableComponent,
     PaginatorComponent,
+    RolesAllowedDirective,
   ],
   imports: [CommonModule, MaterialModule],
   exports: [
@@ -29,6 +31,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TableComponent,
     PerfectScrollbarModule,
     PaginatorComponent,
+    RolesAllowedDirective,
   ],
   providers: [
     {

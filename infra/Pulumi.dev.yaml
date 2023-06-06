@@ -1,0 +1,6 @@
+config:
+  aws:region: us-east-1
+  aws:sessionName: frontend
+  aws:assumeRoleArn: arn:aws:iam::282865065290:role/iac
+  aws:alias: frontend
+  website:directory: dist/system

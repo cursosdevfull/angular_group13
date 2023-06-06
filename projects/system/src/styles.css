@@ -27,3 +27,7 @@ body {
 .hoverRow:hover {
   background-color: red;
 }
+
+.align-right {
+  text-align: right !important;
+}

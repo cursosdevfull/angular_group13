@@ -1,19 +1,39 @@
 <amb-title title="DRIVER" icon="folder">
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="create()">
     <mat-icon>add</mat-icon>
     <span>ADD DRIVER</span>
   </button>
-
 </amb-title>
 <amb-container>
   <perfect-scrollbar class="maxHeightPerfectScrollbar">
-    <amb-table [metadata]="metadata" [data]="data"></amb-table>
+    <amb-table [metadata]="metadata" [data]="data">
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row" class="align-right">
+          <button
+            mat-icon-button
+            color="primary"
+            *rolesAllowed="'ADMIN,lEAD'"
+            (click)="edit(row)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="delete(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </amb-table>
   </perfect-scrollbar>
-  <div>
+  <div fxLayout fxLayoutAlign="space-between center" class="footer">
+    <button mat-flat-button color="warn" (click)="showExport()">
+      <mat-icon>download_for_offline</mat-icon>
+      Exportar data
+    </button>
     <amb-paginator
       (onChangePage)="changePage($event)"
-      [length]="dataOriginal.length"
-      [pageSize]="10"
+      [length]="totalRecords"
+      [pageSize]="pageSize"
     ></amb-paginator>
   </div>
 </amb-container>
