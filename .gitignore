@@ -1,3 +1,6 @@
 ambulance
 node_modules
 .angular
+dist
+infra
+server*
